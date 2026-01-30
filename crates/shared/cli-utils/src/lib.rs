@@ -30,7 +30,7 @@ mod tracing;
 pub use tracing::{LogfmtFormatter, init_test_tracing};
 
 mod version;
-pub use version::Version;
+pub use version::{Version, VersionInfo};
 
 mod runtime;
 pub use runtime::RuntimeManager;

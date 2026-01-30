@@ -146,10 +146,6 @@ dirs-next.workspace = true
 [target.'cfg(unix)'.dependencies]
 tikv-jemallocator = { workspace = true, optional = true }
 
-[build-dependencies]
-vergen = { workspace = true, features = ["build", "cargo", "emit_and_set"] }
-vergen-git2.workspace = true
-
 [dev-dependencies]
 alloy-provider = { workspace = true, default-features = true, features = [
   "txpool-api",

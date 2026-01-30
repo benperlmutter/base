@@ -1724,8 +1724,6 @@ dependencies = [
  "base-cli-utils",
  "op-rbuilder",
  "reth-cli-util",
- "vergen",
- "vergen-git2",
 ]
 
 [[package]]
@@ -1765,6 +1763,7 @@ dependencies = [
  "eyre",
  "kona-registry",
  "libc",
+ "metrics",
  "metrics-exporter-prometheus 0.18.1",
  "metrics-process",
  "reth-node-core",
@@ -1928,8 +1927,6 @@ dependencies = [
  "strum 0.27.2",
  "tracing",
  "url",
- "vergen",
- "vergen-git2",
 ]
 
 [[package]]
@@ -7596,8 +7593,6 @@ dependencies = [
  "tracing-subscriber 0.3.22",
  "url",
  "uuid",
- "vergen",
- "vergen-git2",
 ]
 
 [[package]]

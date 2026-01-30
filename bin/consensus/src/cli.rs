@@ -21,8 +21,7 @@ use crate::{metrics::init_rollup_config_metrics, version};
 #[derive(Parser, Clone, Debug)]
 #[command(
     author,
-    version = version::SHORT_VERSION,
-    long_version = version::LONG_VERSION,
+    version = env!("CARGO_PKG_VERSION"),
     styles = CliStyles::init(),
     about,
     long_about = None
@@ -86,7 +85,7 @@ impl Cli {
             kona_node_service::Metrics::init();
             kona_derive::Metrics::init();
             kona_providers_alloy::Metrics::init();
-            version::VersionInfo::from_build().register_version_metrics();
+            version::VERSION.register_version_metrics("base_node_info");
         })?;
 
         // Run the subcommand.

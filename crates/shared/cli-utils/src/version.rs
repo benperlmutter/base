@@ -1,5 +1,6 @@
 //! Contains node versioning info.
 
+use metrics::gauge;
 use reth_node_core::version::{
     RethCliVersionConsts, default_reth_version_metadata, try_init_version_metadata,
 };
@@ -42,5 +43,26 @@ impl Version {
             ..default_version_metadata
         })
         .expect("Unable to init version metadata");
+    }
+}
+
+/// Simplified version information for binaries that don't need full vergen build info.
+#[derive(Debug, Clone)]
+pub struct VersionInfo {
+    /// The version of the application (from `CARGO_PKG_VERSION`).
+    pub version: &'static str,
+}
+
+impl VersionInfo {
+    /// Creates a new instance of [`VersionInfo`].
+    pub const fn new(version: &'static str) -> Self {
+        Self { version }
+    }
+
+    /// Exposes version information over prometheus with a custom metric name.
+    pub fn register_version_metrics(&self, metric_name: &'static str) {
+        let labels: [(&str, &str); 1] = [("version", self.version)];
+        let gauge = gauge!(metric_name, &labels);
+        gauge.set(1);
     }
 }

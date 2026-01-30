@@ -20,10 +20,6 @@ op-rbuilder.workspace = true
 # reth
 reth-cli-util.workspace = true
 
-[build-dependencies]
-vergen = { workspace = true, features = ["build", "cargo", "emit_and_set"] }
-vergen-git2.workspace = true
-
 [features]
 default = [ "jemalloc" ]
 jemalloc = [ "op-rbuilder/jemalloc", "reth-cli-util/jemalloc" ]
